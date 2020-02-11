@@ -10,13 +10,38 @@
 <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
 </head>
 <body >
-	<div class="container-fluid">
-        <div id="test">12321321321</div>
-	</div>
+
+    <div id="base">
+        <div id="canvascontent"><canvas id="maincanvas"></canvas></div>
+        
+        <img id="qq" style="display:none" src="img/map100.png">
+        <img id="jx" style="display:none" src="img/bar_100_2.png">
+        <img id="qplus" style="display:none" src="img/bar_100_3.png">
+        <img id="at" style="display:none" src="img/bar.png">
+        <section id='demoscroll'>
+            <article>
+                <div class='step' id="p1">
+                    <p>STEP 1</p>
+                </div>
+                <div class='step' id="p2">
+                    <p>STEP 2</p>
+                </div>
+                <div class='step' id="p3">
+                    <p>STEP 3</p>
+                </div>
+                <div class='step' id="p4">
+                    <p>STEP 4</p>
+                </div>
+            </article>
+        </section>
+        <section id='outro'></section>
+    </div>
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src='https://unpkg.com/d3@5.9.1/dist/d3.min.js'></script>
-	<script type="text/javascript" src='https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js'></script>
-    <script type="text/javascript" src="js/slidescroll.js"></script>
-	<script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="mirco/laro.fsm.js"></script>
+    <script type="text/javascript" src="mirco/JCanvas.0.1.js"></script>
+    <script type="text/javascript" src="http://img.foshanplus.com/js/echarts.min.js"></script>
+	<script type="text/javascript" src='js/intersection-observer.js'></script>
+    <script type="text/javascript" src="js/scrollama.min.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
 </body>
 </html>
