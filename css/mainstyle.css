@@ -12,8 +12,13 @@ body{
 	/* line-height: 0.8rem; */
 }
 
+#outro{
+    height: 300px;
+}
+
 #demoscroll {
     position: relative;
+    margin-bottom: 200px;
 }
 
 article {

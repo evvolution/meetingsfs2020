@@ -1,7 +1,36 @@
 var pre_index = 1
 var curr_index = 1
 var number_status = 4
+var on_running = false
 
+function up() {
+    if (on_running) {
+        console.log('不能动，等待粒子变化')
+        return
+    }
+    on_running = true
+    pre_index = curr_index
+    curr_index = pre_index + 1
+    if (curr_index > number_status) {
+        curr_index = 1
+    }
+    console.log('变换',pre_index, curr_index)
+}
+
+
+function down() {
+    if (on_running) {
+        console.log('不能动，等待粒子变化')
+        return
+    }
+    on_running = true
+    pre_index = curr_index
+    curr_index = pre_index - 1
+    if (curr_index <= 0) {
+        curr_index = number_status
+    }
+    console.log('变换',pre_index, curr_index)
+}
 
 $(document).ready(function(){
     setSteps();
@@ -27,17 +56,52 @@ var scroller = scrollama();
 function handleStepEnter(response) {
     // response = { element, direction, index }
     console.log(response);
+    curr_index = response.index + 1
+
+    switch (curr_index) {
+        case 1:
+            if (response.direction == 'down') {
+                pre_index = 1
+            } else {
+                pre_index = 2
+            }
+             break;
+        case 2:
+            if (response.direction == 'down') {
+                pre_index = 1
+            } else {
+                pre_index = 3
+            }
+             break;
+        case 3:
+            if (response.direction == 'down') {
+                pre_index = 2
+            } else {
+                pre_index = 4
+            }
+             break;
+        case 4:
+            if (response.direction == 'down') {
+                pre_index = 3
+            } else {
+                pre_index = 1
+            }
+            break;
+
+    }
+    console.log('enter');
     // add to color to current step
-    down()
+    //down()
     response.element.classList.add('is-active');
     
 }
 
 function handleStepExit(response) {
     // response = { element, direction, index }
+    console.log('exit');
     console.log(response);
     // remove color from current step
-    up()
+    //up()
     response.element.classList.remove('is-active');
 }
 
@@ -53,7 +117,7 @@ function init() {
     // 2. bind scrollama event handlers (this can be chained like below)
     scroller.setup({
         step: '#demoscroll article .step',
-        debug: true,
+        // debug: true,
         offset: 0.9
     })
         .onStepEnter(handleStepEnter)
@@ -65,26 +129,7 @@ function init() {
 
 
 /*-------------*/
-   
-    function up() {
-        pre_index = curr_index
-        curr_index = pre_index + 1
-        if (curr_index > number_status) {
-            curr_index = 1
-        }
-        console.log('变换',pre_index, curr_index)
-    }
-    
-    
-    function down() {
-        pre_index = curr_index
-        curr_index = pre_index - 1
-        if (curr_index <= 0) {
-            curr_index = number_status
-        }
-        console.log("done")
-        console.log('变换',pre_index, curr_index)
-    }
+
     
     Laro.register('JxHome', function (La) {
         var pkg = this;
@@ -271,7 +316,7 @@ function init() {
                 var color = 'rgb('+ range(200, 255) +', '+ range(200, 255) +', '+ range(200, 255) +')';
                 //var color = 'rgb('+r+', '+g+', '+b+')';
                 
-                /*	this.xpos = range(-10*vpx, 10*vpx);
+                /*  this.xpos = range(-10*vpx, 10*vpx);
                     this.ypos = range(-10*vpy, 10*vpy);
                     this.zpos = 10*vpx;
                     */
@@ -369,11 +414,11 @@ function init() {
                 JxHome.pushBalls('qq'); //带有图片本来颜色
                 //只保留形状
                 // for (var i = 0; i < JxHome.qqParticles.length; i ++) {
-                // 	var ball = JxHome.qqParticles[i];
-                // 	JxHome.stage.addChild(ball);
-                // 	ball.end = false;
-                // 	ball.width = ball.logoPos.width;
-                // 	ball.startAnimTime = (+ new Date);
+                //  var ball = JxHome.qqParticles[i];
+                //  JxHome.stage.addChild(ball);
+                //  ball.end = false;
+                //  ball.width = ball.logoPos.width;
+                //  ball.startAnimTime = (+ new Date);
                     
                 // }
                 this._t = 0;  //初始化时间
@@ -394,14 +439,15 @@ function init() {
                         i --;
                     }
                 }
+                on_running = false
             },
             leave: function () {
                 // for (var i = 0; i < JxHome.stage.children.length; i ++) {
-                // 	var ball = JxHome.stage.children[i];
-                // 	if (ball.type == 'normal') {
-                // 		JxHome.stage.children.splice(i, 1);
-                // 		i --;
-                // 	}
+                //  var ball = JxHome.stage.children[i];
+                //  if (ball.type == 'normal') {
+                //      JxHome.stage.children.splice(i, 1);
+                //      i --;
+                //  }
                 // }
             },
             update: function (dt) {
@@ -489,14 +535,15 @@ function init() {
                         i --;
                     }
                 }
+                on_running = false
             },
             leave: function () {
                 // for (var i = 0; i < JxHome.stage.children.length; i ++) {
-                // 	var ball = JxHome.stage.children[i];
-                // 	if (ball.type == 'qq') {
-                // 		JxHome.stage.children.splice(i, 1);
-                // 		i --;
-                // 	}
+                //  var ball = JxHome.stage.children[i];
+                //  if (ball.type == 'qq') {
+                //      JxHome.stage.children.splice(i, 1);
+                //      i --;
+                //  }
                 // }
             },
             update: function (dt) {
@@ -504,8 +551,8 @@ function init() {
                 //JxHome.updateBalls(dt, 'qq');
                 // _t > n, 更新粒子时间点，pushBalls就是把新的点增加到画布
                 // if (this._t > 0 && !this.push) {  
-                // 	JxHome.pushBalls('jx');
-                // 	this.push = true;
+                //  JxHome.pushBalls('jx');
+                //  this.push = true;
                 // }
                 // if (this.push) {
                     for (var i = 0; i < JxHome.jxParticles.length; i ++) {
@@ -570,6 +617,7 @@ function init() {
             
         }).methods({
             enter: function (msg, fromState) {
+                
                 JxHome.initParticles();   //粒子重新归位
                 JxHome.pushBalls('qplus');
                 this._t = 0;
@@ -588,14 +636,15 @@ function init() {
                         i --;
                     }
                 }
+                on_running = false
             },
             leave: function () {
                 // for (var i = 0; i < JxHome.stage.children.length; i ++) {
-                // 	var ball = JxHome.stage.children[i];
-                // 	if (ball.type == 'jx') {
-                // 		JxHome.stage.children.splice(i, 1);
-                // 		i --;
-                // 	}
+                //  var ball = JxHome.stage.children[i];
+                //  if (ball.type == 'jx') {
+                //      JxHome.stage.children.splice(i, 1);
+                //      i --;
+                //  }
                 // }
             },
             update: function (dt) {
@@ -603,8 +652,8 @@ function init() {
                 //JxHome.updateBalls(dt, 'jx');
                 
                 // if (this._t > 0 && !this.push) {
-                // 	JxHome.pushBalls('qplus');
-                // 	this.push = true;
+                //  JxHome.pushBalls('qplus');
+                //  this.push = true;
                 // }
                 
                 // if (this.push) {
@@ -653,10 +702,10 @@ function init() {
                 }
                 if (this.explosion && (+new Date) - this.explosionT >= 1000) {
                     if (curr_index == 4){
-                        this.host.setState(4);	
+                        this.host.setState(4);  
                     }
                     if (curr_index == 2){
-                        this.host.setState(2);	
+                        this.host.setState(2);  
                     };
                 }
             },
@@ -692,6 +741,7 @@ function init() {
                         i --;
                     }
                 }
+                on_running = false
                 
             },
     
@@ -703,8 +753,8 @@ function init() {
                 // JxHome.updateBalls(dt, 'qplus');
                 
                 // if (this._t > 0 && !this.push) {
-                // 	JxHome.pushBalls('at');
-                // 	this.push = true;
+                //  JxHome.pushBalls('at');
+                //  this.push = true;
                 // }
                 
                 // if (this.push) {
@@ -752,10 +802,10 @@ function init() {
                 }
                 if (this.explosion && (+new Date) - this.explosionT >= 1000) {
                     if (curr_index == 1){
-                        this.host.setState(1);	
+                        this.host.setState(1);  
                     }
                     if (curr_index == 3){
-                        this.host.setState(3);	
+                        this.host.setState(3);  
                     }
                     
                 }
@@ -766,7 +816,7 @@ function init() {
                 // if (this._t > 6 && !this.tryJump) {
                     //window.location.href = 'home_nocanvas.html';
                     // this.tryJump = true;
-                // 	this.host.setState(1);
+                //  this.host.setState(1);
                 // }
             },
             draw: function () {
@@ -812,7 +862,7 @@ function init() {
         this.update = function (dt) {
             JxHome.$fsm.$.update(dt);
             // if (JxHome.zstep > 2 || JxHome.zstep < -2) {
-            // 	JxHome.zflag *= -1;
+            //  JxHome.zflag *= -1;
             // }
             // JxHome.zstep += JxHome.zflag*0.01;
             //JxHome.updateNormalBalls(dt);
