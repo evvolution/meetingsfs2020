@@ -12,6 +12,10 @@ body{
 	/* line-height: 0.8rem; */
 }
 
+#intro{
+    height: 1200px;
+}
+
 #outro{
     height: 300px;
 }
