@@ -36,18 +36,44 @@ article {
     margin: 10px 0;
     background-color: rgba(255,0,255,0.2);
     color: #fff;
-    height: 1200px;
+    height: 4000px ! important;
+    text-align: center;
+    position: relative;
 }
+
+.introin{
+    position: absolute;
+    background-color: rgba(255,255,255,0.8);
+    width: 80%;
+    left: 10%;
+    height: 200px;
+    padding: 10px;
+}
+
+.introtitle{
+    top: 10px;
+}
+
+.top{
+    top: 800px;
+}
+
+.second{
+    top: 1600px;
+}
+
+.third{
+    top: 2400px;
+}
+
+.bottom{
+    top: 3200px;
+}
+
 
 .step.is-active {
     background-color: rgba(255,0,0,0.2);
     color: #3b3b3b;
-}
-
-.step p {
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
 }
 
 .listgroup{
@@ -99,3 +125,6 @@ canvas {
     display:block;
     position: fixed;
 }
+
+
+

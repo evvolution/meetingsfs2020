@@ -2,7 +2,11 @@ var pre_index = 1
 var curr_index = 1
 var number_status = 4
 var on_running = false
-
+var rate = 4   //图的大小 > 4
+var rate2 = rate / 2
+var rate3 = rate / 4  //点的数量
+var ball_rate = 8   //点的大小
+var ball_width = 4  // 点的间隔
 function up() {
     if (on_running) {
         console.log('不能动，等待粒子变化')
@@ -58,10 +62,10 @@ function handleStepEnter(response) {
     console.log(response);
     console.log(curr_index, pre_index, on_running)
     tmp_index = response.index + 1
-//    if (on_running) {
-//        console.log('不能动，等待粒子变化')
-//        return
-//    }
+   if (on_running) {
+       console.log('不能动，等待粒子变化')
+       return
+   }
     curr_index = tmp_index
     if (response.direction == 'up') {
          pre_index = tmp_index + 1
@@ -127,13 +131,13 @@ function init() {
             this.ctx = this.stage.ctx;
             this.vpx = canvas.width;
             this.vpy = canvas.height;
-            this.normalN = 300; //噪点
+            this.normalN = 0; //噪点
             this.normalBalls = [];
-            this.angleX = 0.001;
-            this.angleY = 0.001;
+            this.angleX = 0;
+            this.angleY = 0;
 
-            this.zstep = 1;
-            this.zflag = 1;
+            this.zstep = 0;
+            this.zflag = 0;
         }
 
         this.range = function (a, b) {
@@ -206,7 +210,8 @@ function init() {
                 ball.rotateY(this.angleY);
                 var scale = ball.getScale(),
                     pos = ball.getScreenXY();
-                ball.width = Math.max(10*scale, 2);
+                // ball.width = Math.max(10*scale, 2);
+                ball.width = ball.logoPos.width
                 ball.x = pos.x;
                 ball.y = pos.y;
             }
@@ -234,7 +239,7 @@ function init() {
         }
 
         this.initParticles = function () {
-            this.qqParticles = this.getParticles('qq', 100, 100);
+            this.qqParticles = this.getParticles('qq', 60, 60);
             this.jxParticles = this.getParticles('jx', 100, 100);
             this.qplusParticles = this.getParticles('qplus', 100, 100, 130);
             this.atParticles = this.getParticles('at', 100, 100, 100);
@@ -253,14 +258,16 @@ function init() {
             // if (z == undefined) { z = 0; }
             var image = document.getElementById(id);
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            this.ctx.drawImage(image, 0, 0, w, h, this.canvas.width/2-w/4, this.canvas.height/2-h/4, w/2, h/2);
-
-            var imageData = this.ctx.getImageData(this.canvas.width/2-w/4, this.canvas.height/2-h/4, w/2, h/2);
+            this.ctx.drawImage(image, 0, 0, w, h, this.canvas.width/2-w/rate, this.canvas.height/2-h/rate, w/rate3, h/rate3);
+            
+            var imageData = this.ctx.getImageData(this.canvas.width/2-w/rate, this.canvas.height/2-h/rate, w/rate3, h/rate3);
             var ret = [];
+
             for (var x = 0; x < imageData.width; x ++) {
                 for (var y = 0; y < imageData.height; y ++) {
                     //var i = 4*(x * imageData.height + y);
-                    var i = 4*(y * imageData.width + x);
+
+                    var i = 4*(y * image.width + x);
                     if (imageData.data[i + 3] > 128) { // 半透以上就算
                         var r = imageData.data[i],
                             g = imageData.data[i + 1],
@@ -321,12 +328,12 @@ function init() {
                         this.ctx.fill();
                     }
             });
-
+            //var rate = 4
             ball.logoPos = {
-                x: (x-w/4)*20,
-                y: (y-h/4)*20,
+                x: (x-w/rate)*ball_rate,
+                y: (y-h/rate)*ball_rate,
                 z: 0,
-                width: 10,
+                width:ball_width,
                 r: r,
                 g: g,
                 b: b
@@ -340,8 +347,7 @@ function init() {
             ball.startAnimTime = (+new Date);
             ball.end = true;
             ball.type = id;
-
-            ball.setVanishPoint(canvas.width/2, canvas.height/2);
+            ball.setVanishPoint(canvas.width/rate2, canvas.height/rate2);
             ball.setCenterPoint(0, 0, z);
 
             // ball.moveX = 1 - Math.random()*2;
@@ -449,7 +455,8 @@ function init() {
                     var scale = ball.getScale(),
                     pos = ball.getScreenXY();
 
-                    ball.width = Math.max(10*scale, 2);
+                    //ball.width = Math.max(10*scale, 2);
+                    ball.width = ball.logoPos.width;
                     ball.x = pos.x;
                     ball.y = pos.y;
                 }
@@ -472,7 +479,8 @@ function init() {
                         ball.t_zpos = range(-vpx, vpx);
 
                         ball.end = false;
-                        ball.width = range(8, 15);
+                        // ball.width = range(8, 15);
+                        ball.width = ball.logoPos.width
                         ball.startAnimTime = (+ new Date);
                     }
                     this.explosion = true;
@@ -551,7 +559,8 @@ function init() {
                         var scale = ball.getScale(),
                         pos = ball.getScreenXY();
 
-                        ball.width = Math.max(10*scale, 2);
+                        // ball.width = Math.max(10*scale, 2);
+                        ball.width = ball.logoPos.width
                         ball.x = pos.x;
                         ball.y = pos.y;
                     }
@@ -577,7 +586,8 @@ function init() {
                         ball.t_zpos = range(-vpx, vpx);
 
                         ball.end = false;
-                        ball.width = range(8, 15);
+                        // ball.width = range(8, 15);
+                        ball.width = ball.logoPos.width
                         ball.startAnimTime = (+ new Date);
                     }
                     this.explosion = true;
@@ -653,7 +663,8 @@ function init() {
                     var scale = ball.getScale(),
                     pos = ball.getScreenXY();
 
-                    ball.width = Math.max(10*scale, 2);
+                    // ball.width = Math.max(10*scale, 2);
+                    ball.width = ball.logoPos.width
                     ball.x = pos.x;
                     ball.y = pos.y;
                 }
@@ -679,7 +690,8 @@ function init() {
                         ball.t_zpos = range(-vpx, vpx);
 
                         ball.end = false;
-                        ball.width = range(8, 15);
+                        // ball.width = range(8, 15);
+                        ball.width = ball.logoPos.width
                         ball.startAnimTime = (+ new Date);
                     }
                     this.explosion = true;
@@ -755,7 +767,8 @@ function init() {
                         var scale = ball.getScale(),
                         pos = ball.getScreenXY();
 
-                        ball.width = Math.max(10*scale, 2);
+                        // ball.width = Math.max(10*scale, 2);
+                        ball.width = ball.logoPos.width
                         ball.x = pos.x;
                         ball.y = pos.y;
                     }
@@ -780,7 +793,8 @@ function init() {
                         ball.t_zpos = range(-vpx, vpx);
 
                         ball.end = false;
-                        ball.width = range(8, 15);
+                        // ball.width = range(8, 15);
+                        ball.width = ball.logoPos.width
                         ball.startAnimTime = (+ new Date);
                     }
                     this.explosion = true;
