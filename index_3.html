@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>2020佛山两会</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta name="renderer" content="webkit">
+<meta name="referrer" content="never">
+<link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+<!-- Echart -->
+<script type="text/javascript" src="http://img.foshanplus.com/js/echarts.min.js" charset="utf-8"></script>
+</head>
+
+<body >
+    
+    <div id="base">
+        <div id="canvascontent">
+            <canvas id="maincanvas"></canvas>
+            <img id="t0" style="width:100%;height:60%;top:160px;position:absolute;z-index:999;display:none;background-color:transparent" src="img/0/3.png">
+            <div style="width:100%;height:60%;background:white;position:absolute;left:0px;top:160px;z-index:50;background-color:transparent;" id="chart"></div>
+        </div>
+
+        <img id="qq" style="display:none" src="img/0/1.png">
+        <img id="jx" style="display:none" src="img/1/1.png">
+        <img id="qplus" style="display:none" src="img/1/2.png">
+        <img id="at" style="display:none" src="img/1/3.png">
+        <img id="t1" style="display:none" src="img/1/4.png">
+        <img id="t2" style="display:none" src="img/2/5.png">
+        <img id="t3" style="display:none" src="img/2/6.png">
+        <img id="t4" style="display:none" src="img/3/7.png">
+        <img id="t5" style="display:none" src="img/3/8.png">
+        <img id="t6" style="display:none" src="img/3/9.png">
+        <img id="t7" style="display:none" src="img/3/10.png">
+        <img id="t8" style="display:none" src="img/3/11.png">
+        <img id="t9" style="display:none" src="img/4/12.png">
+        <img id="t10" style="display:none" src="img/4/13.png">
+        <img id="t11" style="display:none" src="img/4/14.png">
+        <img id="t12" style="display:none" src="img/4/15.png">
+        <img id="t13" style="display:none" src="img/4/16.png">
+        <img id="t14" style="display:none" src="img/4/16.png">
+        <section id='intro'>
+            <p>介绍开头</p>
+        </section>
+        <section id='demoscroll'>
+            <article>
+                <div class='step' id="p1">
+                    <div class="introin introtitle">
+                        <h3>光阴不负勤奋，拼搏成就梦想。</h3>
+                        <p>刚刚过去的2019年，是新中国成立70周年，也是佛山发展史上极不平凡的一年。佛山认真贯彻落实稳增长政策措施，各项事业取得新进展，全市地区生产总值突破万亿元大关，经济综合实力迈上新台阶。</p>
+                    </div>
+                    <div class="introin top">
+                        <p>2020年是具有里程碑意义的一年，是全面建成小康社会和“十三五”规划收官之年，是脱贫攻坚决战决胜之年，佛山乘着当前的发展势头，自信从容开启新征程。</p>
+                    </div>
+                </div>
+                <div class='step' id="p2">
+                    <div class="introin introtitle">
+                        <h4>一、佛山经济总量破万亿</h4>
+                        <p>经济增长总体稳定、稳中有好。2019年佛山全市完成地区生产总值10751.02亿元，可比增长6.9%，比去年同期提高0.6个百分点。</p>
+                    </div>
+                    <div class="introin top">
+                        <p>从全国范围来看，佛山地区生产总值突破万亿元具有标志性意义。根据各地统计局的公开信息，截至2018年，国内有16座城市地区生产总值突破1万亿元。其中，不少万亿级城市是省会、副省级城市，佛山是少有的地级市</p>
+                    </div>
+                    <div class="introin second">
+                        <p>2019年佛山地区生产总值突破1万亿元大关，成为广东省继广州、深圳之后第3座GDP超过万亿元的城市。</p>
+                    </div>
+                    <div class="introin third">
+                        <p>此次“跻身万亿俱乐部”意味着，佛山仅用全国万分之四的土地，创造了近1%的生产总值，是广东经济高质量发展的有力诠释</p>
+                    </div>
+                    <div class="introin bottom">
+                        <h4>佛山成为广东省第三个GDP过万亿的城市</h4>
+                        <p>2019年，佛山GDP正式突破万亿元大关，我国“万亿俱乐部”城市扩容至17个</p>
+                        <p>目前，除广州和深圳之外，佛山成为广东省第三个GDP过万亿的城市。与前两个城市不同的是，佛山是以制造业立身的城市，2018年佛山的三次产业比重为1.5:56.5:42</p>
+                    </div>
+                </div>
+                <div class='step' id="p3">
+                    <p>介绍3</p>
+                </div>
+                <div class='step' id="p4">
+                    <p>介绍4</p>
+                </div>
+                <div class='step' id="p5">
+                    <p>介绍5</p>
+                </div>
+                <div class='step' id="p6">
+                    <p>介绍6</p>
+                </div>
+                <div class='step' id="p7">
+                    <p>介绍7</p>
+                </div>
+                <div class='step' id="p8">
+                    <p>介绍8</p>
+                </div>
+                <div class='step' id="p9">
+                    <p>介绍9</p>
+                </div>
+                <div class='step' id="p10">
+                    <p>介绍10</p>
+                </div>
+                <div class='step' id="p11">
+                    <p>介绍11</p>
+                </div>
+                <div class='step' id="p12">
+                    <p>介绍12</p>
+                </div>
+                <div class='step' id="p13">
+                    <p>介绍13</p>
+                </div>
+                <div class='step' id="p14">
+                    <p>介绍14</p>
+                </div>
+                <div class='step' id="p15">
+                    <p>介绍15</p>
+                </div>
+                <div class='step' id="p16">
+                    <p>介绍16</p>
+                </div>
+                <div class='step' id="p17">
+                    <p>介绍16</p>
+                </div>
+
+
+            </article>
+        </section>
+        <section id='outro'>
+            <p>介绍结尾</p>
+        </section>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="mirco/laro.fsm.js"></script>
+    <script type="text/javascript" src="mirco/JCanvas.0.1.js"></script>
+    <script type="text/javascript" src="http://img.foshanplus.com/js/echarts.min.js"></script>
+	<script type="text/javascript" src='js/intersection-observer.js'></script>
+    <script type="text/javascript" src="js/scrollama.min.js"></script>
+    <script type="text/javascript" src="js/init_6.js"></script>
+</body>
+</html>
