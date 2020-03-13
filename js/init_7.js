@@ -164,6 +164,9 @@ $(document).ready(function(){
 });
 
 
+window.onload = function(){
+    setTimeout(() => window.scrollTo(0,0), 150); // 返回页面顶部
+};
 
 
 function setSteps(){
