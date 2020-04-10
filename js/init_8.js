@@ -24,8 +24,8 @@ var texts = [
         {'text':screen_height+'*'+screen_width, 'x':0, 'y':0,'font': '54px 微软雅黑',},
     ],
     [
-        {'text':'佛山GDP', 'x':0, 'y':-190-x_delay_px,'font': '500 40px 微软雅黑',},
-        {'text':'10751亿元', 'x':0, 'y':-150-x_delay_px,'font': 'small-caps 40px 微软雅黑'},
+        {'text':'佛山GDP', 'x':0, 'y':-190-x_delay_px,'font': '500 30px 微软雅黑',},
+        {'text':'10751亿元', 'x':0, 'y':-150-x_delay_px,'font': 'small-caps 30px 微软雅黑'},
     ],
     [
         {'text': '| 2015年 8134', 'x':-160-x_delay_px, 'y':-112-y_delay_px, 'textAlign': 'left'},
@@ -162,9 +162,9 @@ var scale = 1.2
 var p2_option = {
     series: {
         type: 'pie',
-        startAngle: 0,
+        startAngle: 90,
         radius: ['10%', '35%'],
-        center: ['55%', '80%'],
+        center: ['55%', '55%'],
         roseType: 'area',
         // tooltip: {
         //     show: true,
@@ -219,16 +219,16 @@ var p2_option = {
             },
         },
         data: [
-            {value: 3176.62,name: '南海',itemStyle:{normal:{color:'rgb(254, 152, 49,1)'}}},
-            {value: 1920.46,name: '禅城',itemStyle:{normal:{color:'rgb(70, 170, 242,1)'}}},
-            {value: 3523.18,name: '顺德',itemStyle:{normal:{color:'rgb(242, 73, 80,1)'}}},
-            {value: 871.58,name: '高明',itemStyle:{normal:{color:'rgb(250, 189, 192,1)'}}},
-            {value: 1258.76,name: '三水',itemStyle:{normal:{color:'rgb(254, 206, 117,1)'}}},
-            {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
-            {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
-            {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
-            {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
-            {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
+            {value: 3176.62,name: '南海',itemStyle:{normal:{color:'rgb(254, 152, 49,0)'}}},
+            {value: 1920.46,name: '禅城',itemStyle:{normal:{color:'rgb(70, 170, 242,0)'}}},
+            {value: 3523.18,name: '顺德',itemStyle:{normal:{color:'rgb(242, 73, 80,0)'}}},
+            {value: 871.58,name: '高明',itemStyle:{normal:{color:'rgb(250, 189, 192,0)'}}},
+            {value: 1258.76,name: '三水',itemStyle:{normal:{color:'rgb(254, 206, 117,0)'}}},
+            // {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
+            // {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
+            // {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
+            // {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
+            // {value: 0,name: "",itemStyle:{normal:{color:'transparent'}},label:{show:false},labelLine:{show:false}},
         ]
 }}
 
